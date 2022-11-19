@@ -223,7 +223,8 @@ public extension JellyfinClient {
 
     /// Signs in a user given a username and password. On a successful response `accessToken` is set to the given access token.
     ///
-    /// - Note: Overrides the current access token if one was previously set. Save this token locally or revoke it with `signOut` for proper access token management.
+    /// - Note: Overrides the current access token if one was previously set. Save this token locally or revoke it with `signOut` for proper
+    /// access token management.
     ///
     /// - Parameters:
     ///   - username: username of the user

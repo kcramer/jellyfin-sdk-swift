@@ -2,8 +2,8 @@
   "openapi": "3.0.1",
   "info": {
     "title": "Jellyfin API",
-    "version": "10.8.4",
-    "x-jellyfin-version": "10.8.4"
+    "version": "10.8.7",
+    "x-jellyfin-version": "10.8.7"
   },
   "servers": [
     {
@@ -49788,7 +49788,8 @@
           "Audio",
           "Video",
           "Subtitle",
-          "EmbeddedImage"
+          "EmbeddedImage",
+          "Data"
         ],
         "type": "string",
         "description": "Enum MediaStreamType."
@@ -54327,6 +54328,36 @@
         },
         "additionalProperties": false
       },
+      "TranscodeReason": {
+        "enum": [
+          "ContainerNotSupported",
+          "VideoCodecNotSupported",
+          "AudioCodecNotSupported",
+          "SubtitleCodecNotSupported",
+          "AudioIsExternal",
+          "SecondaryAudioNotSupported",
+          "VideoProfileNotSupported",
+          "VideoLevelNotSupported",
+          "VideoResolutionNotSupported",
+          "VideoBitDepthNotSupported",
+          "VideoFramerateNotSupported",
+          "RefFramesNotSupported",
+          "AnamorphicVideoNotSupported",
+          "InterlacedVideoNotSupported",
+          "AudioChannelsNotSupported",
+          "AudioProfileNotSupported",
+          "AudioSampleRateNotSupported",
+          "AudioBitDepthNotSupported",
+          "ContainerBitrateExceedsLimit",
+          "VideoBitrateNotSupported",
+          "AudioBitrateNotSupported",
+          "UnknownVideoStreamInfo",
+          "UnknownAudioStreamInfo",
+          "DirectPlayError",
+          "VideoRangeTypeNotSupported"
+        ],
+        "type": "string"
+      },
       "TranscodeSeekInfo": {
         "enum": [
           "Auto",
@@ -54394,34 +54425,10 @@
             "nullable": true
           },
           "TranscodeReasons": {
-            "enum": [
-              "ContainerNotSupported",
-              "VideoCodecNotSupported",
-              "AudioCodecNotSupported",
-              "SubtitleCodecNotSupported",
-              "AudioIsExternal",
-              "SecondaryAudioNotSupported",
-              "VideoProfileNotSupported",
-              "VideoLevelNotSupported",
-              "VideoResolutionNotSupported",
-              "VideoBitDepthNotSupported",
-              "VideoFramerateNotSupported",
-              "RefFramesNotSupported",
-              "AnamorphicVideoNotSupported",
-              "InterlacedVideoNotSupported",
-              "AudioChannelsNotSupported",
-              "AudioProfileNotSupported",
-              "AudioSampleRateNotSupported",
-              "AudioBitDepthNotSupported",
-              "ContainerBitrateExceedsLimit",
-              "VideoBitrateNotSupported",
-              "AudioBitrateNotSupported",
-              "UnknownVideoStreamInfo",
-              "UnknownAudioStreamInfo",
-              "DirectPlayError",
-              "VideoRangeTypeNotSupported"
-            ],
-            "type": "string"
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TranscodeReason"
+            }
           }
         },
         "additionalProperties": false
